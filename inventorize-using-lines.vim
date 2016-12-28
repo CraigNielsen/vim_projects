@@ -7,14 +7,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +107 website-service/src/packages/components/IncomingBSOPackageDetail.jsx
-badd +67 website-service/src/packages/components/BSOPLineItemView.jsx
-badd +76 backend-service/backend/api/v1/resources/branch_sales_order_packages/bsop_collection.py
-badd +2 website-service/src/orders/components.jsx
-badd +84 website-service/src/components/table/Table.jsx
+badd +110 backend-service/backend/api/v1/resources/branch_sales_order_packages/bsop_collection.py
+badd +2 website-service/src/packages/containers/IncomingPackageDetailContainer.jsx
+badd +64 website-service/src/packages/components/IncomingBSOPackageLines.jsx
+badd +1 backend-service/backend/api/v1/resources/stock_units/handle_incoming.py
+badd +157 backend-service/backend/api/v1/resources/stock_units/tests/test_stock_unit_incoming.py
 argglobal
 silent! argdel *
-edit website-service/src/packages/components/BSOPLineItemView.jsx
+edit website-service/src/packages/components/IncomingBSOPackageLines.jsx
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -30,12 +30,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 68 - ((37 * winheight(0) + 37) / 74)
+let s:l = 66 - ((38 * winheight(0) + 37) / 74)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-68
-normal! 07|
+66
+normal! 058|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
