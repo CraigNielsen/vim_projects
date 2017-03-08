@@ -7,48 +7,25 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +8 backend-service/backend/legacy/sync/tests/test_upsert_products.py
-badd +4 backend-service/backend/legacy/sync/upsert_products.py
-badd +7 backend-service/backend/jobs/pull_legacy_entities_job.py
-badd +2 backend-service/backend/tasks/upsert_legacy_data_to_reps_task.py
-badd +16 backend-service/backend/__init__.py
-badd +1 backend-service/backend/legacy/sync/pull_legacy_entities2.py
-badd +33 backend-service/backend/legacy/sync/upsert_reps_faulty_claims.py
-badd +1 backend-service/backend/legacy/__init__.py
-badd +3 backend-service/backend/legacy/sync/__init__.py
+badd +150 backend-service/backend/api/v1/resources/retail/returns/tests/test_faulty_claim_collection.py
+badd +1 backend-service/backend/api/v1/resources/retail/returns/tests/test_retail_faulty_claim_singleton.py
+badd +20 backend-service/backend/api/v1/resources/retail/returns/faulty_claims.py
+badd +65 backend-service/backend/api/v1/utils/__init__.py
+badd +9 backend-service/backend/api/v1/schemas/faulty_claim_schema.py
+badd +11 backend-service/backend/api/v1/resources/faulty_claims/tests/test_fc_is_packaged_filter.py
+badd +22 backend-service/backend/api/v1/resources/wholesale/returns/faulty_claims.py
+badd +7 backend-service/backend/api/v1/resources/retail/returns/__init__.py
+badd +19 backend-service/backend/tasks/tests/test_celery_sync_worker.py
+badd +23 backend-service/backend/api/v1/resources/faulty_claims/tests/test_faulty_claim_singleton.py
+badd +75 backend-service/backend/testing/api_test_case.py
 argglobal
 silent! argdel *
-edit backend-service/backend/tasks/upsert_legacy_data_to_reps_task.py
+edit backend-service/backend/api/v1/resources/faulty_claims/tests/test_faulty_claim_singleton.py
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-wincmd _ | wincmd |
-split
-1wincmd k
-wincmd w
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 31 + 69) / 139)
-exe '2resize ' . ((&lines * 63 + 38) / 77)
-exe 'vert 2resize ' . ((&columns * 107 + 69) / 139)
-exe '3resize ' . ((&lines * 10 + 38) / 77)
-exe 'vert 3resize ' . ((&columns * 107 + 69) / 139)
-argglobal
-enew
-file NERD_tree_1
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-wincmd w
 argglobal
 setlocal fdm=expr
 setlocal fde=pymode#folding#expr(v:lnum)
@@ -58,36 +35,18 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 3 - ((2 * winheight(0) + 31) / 63)
+let s:l = 11 - ((10 * winheight(0) + 37) / 74)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-3
+11
 normal! 0
-wincmd w
-argglobal
-enew
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 31 + 69) / 139)
-exe '2resize ' . ((&lines * 63 + 38) / 77)
-exe 'vert 2resize ' . ((&columns * 107 + 69) / 139)
-exe '3resize ' . ((&lines * 10 + 38) / 77)
-exe 'vert 3resize ' . ((&columns * 107 + 69) / 139)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20 shortmess=filnxtToOc
+set winheight=1 winwidth=20 shortmess=filnxtToOcI
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)
