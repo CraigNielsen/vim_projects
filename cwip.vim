@@ -7,40 +7,33 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +150 backend-service/backend/api/v1/resources/retail/returns/tests/test_faulty_claim_collection.py
-badd +1 backend-service/backend/api/v1/resources/retail/returns/tests/test_retail_faulty_claim_singleton.py
-badd +20 backend-service/backend/api/v1/resources/retail/returns/faulty_claims.py
-badd +65 backend-service/backend/api/v1/utils/__init__.py
-badd +9 backend-service/backend/api/v1/schemas/faulty_claim_schema.py
-badd +11 backend-service/backend/api/v1/resources/faulty_claims/tests/test_fc_is_packaged_filter.py
-badd +22 backend-service/backend/api/v1/resources/wholesale/returns/faulty_claims.py
-badd +7 backend-service/backend/api/v1/resources/retail/returns/__init__.py
-badd +19 backend-service/backend/tasks/tests/test_celery_sync_worker.py
-badd +23 backend-service/backend/api/v1/resources/faulty_claims/tests/test_faulty_claim_singleton.py
-badd +75 backend-service/backend/testing/api_test_case.py
+badd +19 backend-service/backend/api/v1/resources/branches/branch_collection.py
+badd +131 backend-service/backend/api/v1/resources/branches/tests/test_branch_collection.py
+badd +1 website-service/src/utils/withDataFetch.jsx
 argglobal
 silent! argdel *
-edit backend-service/backend/api/v1/resources/faulty_claims/tests/test_faulty_claim_singleton.py
+edit website-service/src/utils/withDataFetch.jsx
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 argglobal
-setlocal fdm=expr
-setlocal fde=pymode#folding#expr(v:lnum)
+setlocal fdm=manual
+setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 11 - ((10 * winheight(0) + 37) / 74)
+silent! normal! zE
+let s:l = 3 - ((2 * winheight(0) + 35) / 70)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-11
-normal! 0
+3
+normal! 08|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
